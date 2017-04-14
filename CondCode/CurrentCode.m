@@ -16,13 +16,14 @@ C.eps_0 = 8.854187817e-12;          % vacuum permittivity
 C.mu_0 = 1.2566370614e-6;           % vacuum permeability
 C.c = 299792458;                    % speed of light
 
-nx = 100;
-ny = 50;
+
+nx = 100; %number of x grid
+ny = 50; %number of y grid
 
 Acond = 1;
 Bcond = 10;
 
-SimType = 'e';
+SimType = 'e'; %setting simulation type 
 
 Max = 5;
 ncircs = 20;
@@ -36,7 +37,7 @@ if SimType == 'c'
     for k = 1:n
         Max(k) = k;
         fc = k;
-        for i = 1:nSims
+        for i = 1:nSims 
             % V = 1 --> R = 1/I
             Res(k,i) = 1/GetCurrents(ncircs,Max(k),nx,ny,...
                 Acond,Bcond,doPlot,SimType);
@@ -44,8 +45,8 @@ if SimType == 'c'
     end
 else %if SimType == 'e'
 
-    n = 20;
-    nSims = 30;
+    n = 2;
+    nSims = 10; %number of simulations is high, changed to 10 
     Res = zeros(n, nSims);
 
     for k = 1:n
